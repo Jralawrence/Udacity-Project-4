@@ -1,10 +1,9 @@
-C(.devops) account-admin:~/environment/Udacity-Project-4 (main) $ ./run_kubernetes.sh 
+(.devops) account-admin:~/environment/Udacity-Project-4 (main) $ ./run_kubernetes.sh 
 Error from server (AlreadyExists): pods "udacity-project-4" already exists
-NAME                READY   STATUS    RESTARTS   AGE
-udacity-project-4   1/1     Running   0          6m47s
+NAME                READY   STATUS    RESTARTS       AGE
+udacity-project-4   1/1     Running   2 (161m ago)   44h
 Forwarding from 127.0.0.1:8000 -> 80
 Forwarding from [::1]:8000 -> 80
-Handling connection for 8000
 Handling connection for 8000
 ^C * Serving Flask app "app" (lazy loading)
  * Environment: production
@@ -14,6 +13,22 @@ Handling connection for 8000
  * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
  * Restarting with stat
  * Debugger is active!
- * Debugger PIN: 203-854-522
-[2021-11-30 17:36:06,568] INFO in app: JSON payload: 
+ * Debugger PIN: 186-371-976
+[2021-12-02 13:53:19,508] INFO in app: JSON payload: 
 {'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2021-12-02 13:53:19,530] INFO in app: Inference payload DataFrame: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2021-12-02 13:53:19,542] INFO in app: Scaling Payload: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+127.0.0.1 - - [02/Dec/2021 13:53:19] "POST /predict HTTP/1.1" 200 -
+
+(.devops) account-admin:~/environment/Udacity-Project-4 (main) $ ./make_prediction.sh 
+Port: 8000
+{
+  "prediction": [
+    20.35373177134412
+  ]
+}
+(.devops) account-admin:~/environment/Udacity-Project-4 (main) $ 
